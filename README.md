@@ -14,8 +14,8 @@ apoyo para la validación de los servicios, se sugiere utilizar alguna herramien
 como SOAP UI, REST Client, u otro.
 
 Integrantes:
-Araya Mundaca, Maximiliano - https://github.com/Max01mvp
-Herrera Santibañez, Benjamín - https://github.com/bjhs642
-Palacios Gómez, Vania - https://github.com/PVania
-Uribe Fuentes, David - https://github.com/davideliseo
-Rojas Rojas, Matías - https://github.com/matias-rojas-dev
+Araya Mundaca, Maximiliano - https://github.com/Max01mvp <br />
+Herrera Santibañez, Benjamín - https://github.com/bjhs642 <br />
+Palacios Gómez, Vania - https://github.com/PVania <br />
+Uribe Fuentes, David - https://github.com/davideliseo <br />
+Rojas Rojas, Matías - https://github.com/matias-rojas-dev <br />
