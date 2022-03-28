@@ -15,6 +15,7 @@ como SOAP UI, REST Client, u otro.
 
 Integrantes:
 
+Aguirre Cornejo, Patricio
 Araya Mundaca, Maximiliano - https://github.com/Max01mvp <br />
 Herrera Santibañez, Benjamín - https://github.com/bjhs642 <br />
 Palacios Gómez, Vania - https://github.com/PVania <br />
