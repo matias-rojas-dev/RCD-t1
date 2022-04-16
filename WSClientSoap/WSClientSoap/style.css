@@ -1,0 +1,62 @@
+﻿* {
+    font-family: sans-serif;
+    font-size: 17px;
+}
+body {
+    width: 1000px;
+    margin: 0 auto;
+        background: #efeeee29;
+
+}
+
+
+.name_method,.rut_method {
+    border-top: 1px solid #e7e7e7;
+    padding: 50px;
+    margin-bottom: 20px;
+    line-height: 35px
+}
+
+.name_response {
+    background: #28a745;
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+input[type="text" i], input[type="number"] {
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+    outline: none;
+}
+input:focus {
+    border-bottom: 1px solid black;
+}
+
+
+.button {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #007bff94;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: .6s ease all;
+}
+
+hr {
+    height: 1px;
+    background-color: white;
+    border: none;
+}
+
+
+.button:hover {
+    background-color: #007bff;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
