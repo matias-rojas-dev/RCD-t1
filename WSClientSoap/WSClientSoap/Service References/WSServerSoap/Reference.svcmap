@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/CalculatorService/MetodosRCD?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/WSServerSOAP/MetodosRCD?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MetodosRCD.wsdl" MetadataType="Wsdl" ID="f8bc9569-c718-48be-a4fa-9a5f9cb624c2" SourceId="1" SourceUrl="http://localhost:8080/CalculatorService/MetodosRCD?wsdl" />
-    <MetadataFile FileName="MetodosRCD.xsd" MetadataType="Schema" ID="68d6ef5c-cda5-4a58-8de7-f4eff6bfcf67" SourceId="1" SourceUrl="http://localhost:8080/CalculatorService/MetodosRCD?xsd=1" />
+    <MetadataFile FileName="MetodosRCD1.xsd" MetadataType="Schema" ID="5d7977f1-d716-45f3-a9a1-fe7c6c6b161c" SourceId="1" SourceUrl="http://localhost:8080/WSServerSOAP/MetodosRCD?xsd=1" />
+    <MetadataFile FileName="MetodosRCD1.wsdl" MetadataType="Wsdl" ID="310feb1e-af07-401c-94aa-762558ae499d" SourceId="1" SourceUrl="http://localhost:8080/WSServerSOAP/MetodosRCD?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

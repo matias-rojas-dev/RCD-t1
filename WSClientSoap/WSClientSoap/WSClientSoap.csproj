@@ -62,6 +62,10 @@
     <Content Include="HomeClient.aspx" />
     <None Include="Service References\WSServerSoap\configuration91.svcinfo" />
     <None Include="Service References\WSServerSoap\configuration.svcinfo" />
+    <None Include="Service References\WSServerSoap\MetodosRCD1.wsdl" />
+    <None Include="Service References\WSServerSoap\MetodosRCD1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\WSServerSoap\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -85,10 +89,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSServerSoap\MetodosRCD.wsdl" />
-    <None Include="Service References\WSServerSoap\MetodosRCD.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

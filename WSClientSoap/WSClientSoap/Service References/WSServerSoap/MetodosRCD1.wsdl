@@ -2,7 +2,7 @@
 <definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="MetodosRCD" targetNamespace="http://ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema>
-      <xsd:import schemaLocation="http://localhost:8080/CalculatorService/MetodosRCD?xsd=1" namespace="http://ws/" />
+      <xsd:import schemaLocation="http://localhost:8080/WSServerSOAP/MetodosRCD?xsd=1" namespace="http://ws/" />
     </xsd:schema>
   </types>
   <message name="ValidacionNombre">
@@ -50,7 +50,7 @@
   </binding>
   <service name="MetodosRCD">
     <port name="MetodosRCDPort" binding="tns:MetodosRCDPortBinding">
-      <soap:address location="http://localhost:8080/CalculatorService/MetodosRCD" />
+      <soap:address location="http://localhost:8080/WSServerSOAP/MetodosRCD" />
     </port>
   </service>
 </definitions>
