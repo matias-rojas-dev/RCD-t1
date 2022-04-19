@@ -75,6 +75,18 @@
     <Content Include="Connected Services\WebService\ClienteSoap.WebService.ValidacionRutResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\wsServicioCliente\ClienteSoap.wsServicioCliente.ValidacionNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\wsServicioCliente\ClienteSoap.wsServicioCliente.ValidacionRutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\wsServicioCliente\configuration91.svcinfo" />
+    <None Include="Connected Services\wsServicioCliente\configuration.svcinfo" />
+    <None Include="Connected Services\wsServicioCliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="WebForm.aspx" />
     <None Include="Connected Services\WebService\configuration91.svcinfo" />
     <None Include="Connected Services\WebService\configuration.svcinfo" />
@@ -82,10 +94,17 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\WebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsServicioCliente\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -104,6 +123,10 @@
     <None Include="Connected Services\WebService\WSValidar.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\wsServicioCliente\WSValidar.wsdl" />
+    <None Include="Connected Services\wsServicioCliente\WSValidar.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -117,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\WebService\" />
+    <WCFMetadataStorage Include="Connected Services\wsServicioCliente\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
