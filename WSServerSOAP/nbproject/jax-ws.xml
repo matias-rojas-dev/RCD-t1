@@ -4,6 +4,12 @@
     <service name="MetodosRCD">
       <implementation-class>ws.MetodosRCD</implementation-class>
     </service>
+    <service name="CalculatorService">
+      <implementation-class>com.calculator.CalculatorService</implementation-class>
+    </service>
+    <service name="Calculator">
+      <implementation-class>com.calculator.Calculator</implementation-class>
+    </service>
   </services>
   <clients/>
   <jsr109>false</jsr109>
