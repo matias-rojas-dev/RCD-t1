@@ -21,12 +21,29 @@ async function validateNames(event) {
   const namesElement = document.getElementById("names");
 
   namesElement.innerHTML = `
-    <div><span class="font-semibold">Nombres:</span> ${names.join(", ")}</div>
-    <div><span class="font-semibold">Apellido paterno:</span> ${paternal}</div>
-    <div><span class="font-semibold">Apellido materno:</span> ${maternal}</div>
+    <div class="border-b-2 border-r-2 border-blue-400/5 px-3 py-2 text-slate-100 rounded-tl-lg font-semibold">
+      Nombres
+    </div>
+    <div class="border-b-2 border-blue-400/5 px-3 py-2 text-slate-300">
+      ${names.join(", ")}
+    </div>
+    <div class="border-b-2 border-r-2 border-blue-400/5 px-3 py-2 text-slate-100 font-semibold">
+      Apellido paterno
+    </div>
+    <div class="border-b-2 border-blue-400/5 px-3 py-2 text-slate-300">
+      ${paternal}
+    </div>
+    <div class="border-r-2 border-blue-400/5 px-3 py-2 text-slate-100 rounded-bl-lg font-semibold">
+      Apellido materno
+    </div>
+    <div class="px-3 py-2 text-slate-300">
+      ${maternal}
+    </div>
   `;
 
-  namesElement.classList = "m-3";
+  namesElement.classList =
+    "grid border-2 border-blue-400/5 rounded-xl text-white my-6 bg-clip-border text-sm";
+  namesElement.style.gridTemplateColumns = "max-content auto";
 }
 
 async function validateRut(event) {
@@ -44,21 +61,22 @@ async function validateRut(event) {
   const { isValid } = await response.json();
   const isFormatValid = isValidRutFormat(rut);
 
-  const base = "flex items-center gap-1 ml-3 mt-2 font-semibold";
+  const base =
+    "flex items-center gap-2 border-2 border-blue-400/5 rounded-lg px-3 py-2 mt-4 font-semibold text-sm";
   if (isFormatValid && isValid) {
     rutStatus.innerHTML = `
+      <span class="material-icons">verified</span>
       <span>El RUT es válido</span>
-      <span class="material-icons text-xl">verified</span>
     `;
 
-    rutStatus.className = `${base} text-green-500`;
+    rutStatus.className = `${base} text-emerald-400`;
   } else {
     rutStatus.innerHTML = `
+      <span class="material-icons">error</span>
       <span>${isFormatValid ? "El RUT no es válido" : "Formato inválido"}</span>
-      <span class="material-icons text-xl">error</span>
     `;
 
-    rutStatus.className = `${base} text-red-500`;
+    rutStatus.className = `${base} text-rose-400`;
   }
 }
 
@@ -68,7 +86,7 @@ function isValidRutFormat(rut) {
   );
 }
 
-function toggle(inputId, buttonId) {
-  document.getElementById(buttonId).disabled =
-    document.getElementById(inputId).value === "";
+function toggle(id) {
+  const isEmpty = document.getElementById(id).value === "";
+  document.getElementById(`${id}_button`).disabled = isEmpty;
 }

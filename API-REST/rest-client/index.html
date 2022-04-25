@@ -12,30 +12,41 @@
 <script src="service-url.js"></script>
 <script src="app.js"></script>
 
-<body class="bg-blue-300">
-  <div class="mx-auto mt-12 p-6 mb-5 bg-white shadow-lg rounded-lg max-w-xl">
-    <h1 class="font-semibold text-lg mb-2 opacity-80">Web service - API REST</h1>
-    <p class="text-sm opacity-60 mb-6">
+<body class="bg-[#121d2e]">
+  <div class="mt-24 p-7 mb-5 bg-slate-800 rounded-xl shadow-lg mx-auto max-w-xl">
+    <h1 class="font-semibold text-lg mb-2 text-white">Web service - API REST</h1>
+    <p class="text-sm text-slate-300 mb-6">
       Ingrese su nombre completo para separarlo en nombres y apellidos paterno y
       materno. Además, ingrese su RUT (con dígito verificador) para validarlo.
     </p>
     <form class="flex justify-between items-center gap-6" onsubmit="validateNames(event)">
-      <input class="border-2 border-blue-400/20 rounded-lg px-3 py-2 w-full" name="name" id="name"
-        placeholder="Nombre completo" onkeyup="toggle('name', 'name_button')">
-      <button
-        class="bg-violet-500 text-white font-semibold w-28 h-10 rounded-lg disabled:bg-gray-400/60 transition-all duration-200"
-        id="name_button" disabled>Separar</button>
+      <input class="text-white bg-transparent rounded-lg px-3 py-2 w-full font-semibold placeholder:text-slate-600
+      border-2 border-blue-400/20 focus:outline-none focus:border-violet-500
+      transition-colors duration-300" name="name" id="name" placeholder="Nombre completo" onkeyup="toggle('name')">
+      <div class="relative group">
+        <div class="absolute -inset-[1px] top-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg blur opacity-70
+          group-hover:opacity-100 transition duration-500 group-hover:duration-200" id="name_button_shadow">
+        </div>
+        <button
+          class="relative bg-violet-500 text-white font-semibold w-28 h-10 rounded-lg disabled:bg-gray-400/60 transition-all duration-200"
+          id="name_button" disabled>Separar</button>
+      </div>
     </form>
     <div id="names"></div>
     <form class="flex justify-between items-center gap-6 mt-6" onsubmit="validateRut(event)">
-      <input class="border-2 border-blue-400/20 rounded-lg px-3 py-2 w-full" name="rut" id="rut" placeholder="RUT con DV"
-        onkeyup="toggle('rut', 'rut_button')">
-      <button
-        class="bg-emerald-400 text-white font-semibold w-28 h-10 rounded-lg disabled:bg-gray-400/60 transition-all duration-200"
-        id="rut_button" disabled>Validar</button>
+      <input class="text-white bg-transparent rounded-lg px-3 py-2 w-full font-semibold placeholder:text-slate-600
+        border-2 border-blue-400/20 focus:outline-none focus:border-cyan-500
+        transition-colors duration-300" name="rut" id="rut" placeholder="RUT con DV" onkeyup="toggle('rut')">
+      <div class="relative group">
+        <div class="absolute -inset-[1px] top-1 bg-gradient-to-r from-sky-600 to-teal-600 rounded-lg blur opacity-70
+          group-hover:opacity-100 transition duration-500 group-hover:duration-200" id="rut_button_shadow">
+        </div>
+        <button
+          class="relative bg-cyan-500 text-white font-semibold w-28 h-10 rounded-lg disabled:bg-gray-400/60 transition-all duration-200"
+          id="rut_button" disabled>Validar</button>
+      </div>
     </form>
     <div id="rut_status"></div>
-  </div>
 </body>
 
 </html>
