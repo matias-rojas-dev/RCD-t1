@@ -18,12 +18,10 @@ async function validateNames(event) {
     lastNames: { paternalName, maternalName },
   } = await response.json();
 
-  console.log(names)
-
   document.getElementById("names").innerHTML = `
     <strong>Nombres:</strong>
     <ul>
-      ${names.map(name => `<li>${name}</li>`).join("\n")}
+      ${names.map((name) => `<li>${name}</li>`).join("\n")}
     </ul>
     <strong>Apellidos:</strong>
     <ul>
@@ -44,7 +42,17 @@ async function validateRut(event) {
   ).catch((error) => console.log(error));
 
   const { isValid } = await response.json();
-  document.getElementById("isValidRut").innerHTML = isValid
-    ? "Válido"
-    : "Inválido";
+  const isValidRutElement = document.getElementById("isValidRut");
+
+  isValidRutElement.innerHTML = isValidRut(rut)
+    ? isValid
+      ? "Válido"
+      : "Inválido"
+    : "Formato inválido";
+}
+
+function isValidRut(rut) {
+  return /^(?:(?:(\d{1,2})(\d{3})(\d{3})\-?(\d|k))|(?:(\d{1,2})(\.\d{3}\.)(\d{3})\-(\d|k))|(\d{5,9}))$/gm.test(
+    rut
+  );
 }

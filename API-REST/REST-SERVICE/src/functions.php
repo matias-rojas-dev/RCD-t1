@@ -1,7 +1,13 @@
 <?php
 
+function normalize_rut($rut)
+{
+    return preg_replace('/(\.|\-)/', '', $rut);
+}
+
 function is_valid_rut($rut)
 {
+    $rut = normalize_rut($rut);
     $verifying_digit = substr($rut, -1);
     $rut = substr($rut, 0, -1);
     return get_verifying_digit($rut) === $verifying_digit;

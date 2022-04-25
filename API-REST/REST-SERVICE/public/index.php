@@ -5,13 +5,10 @@ require_once __DIR__ . '/../src/functions.php';
 
 router('GET', '^/validar-rut/(?<rut>.+)$', function ($params) {
     $rut = $params['rut'];
-    $has_only_digits = preg_match('/^(\d+)$/', $rut);
     $length = strlen($rut);
 
-    if (!$has_only_digits) {
-        echo json_encode(['error' => 'El RUT sólo debe contener dígitos.']);
-    } else if (5 > $length || $length > 9) {
-        echo json_encode(['error' => 'El RUT debe contener entre 5 y 9 dígitos.']);
+    if (5 > $length || $length > 12) {
+        echo json_encode(['error' => 'El RUT debe contener entre 5 y 12 caracteres.']);
     } else {
         echo json_encode(['isValid' => is_valid_rut($rut)]);
     }
