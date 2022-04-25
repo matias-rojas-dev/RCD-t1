@@ -15,15 +15,15 @@ async function validateNames(event) {
 
   const {
     names,
-    lastNames: { paternalName, maternalName },
+    last: { paternal, maternal },
   } = await response.json();
 
   const namesElement = document.getElementById("names");
 
   namesElement.innerHTML = `
     <div><span class="font-semibold">Nombres:</span> ${names.join(", ")}</div>
-    <div><span class="font-semibold">Apellido paterno:</span> ${paternalName}</div>
-    <div><span class="font-semibold">Apellido materno:</span> ${maternalName}</div>
+    <div><span class="font-semibold">Apellido paterno:</span> ${paternal}</div>
+    <div><span class="font-semibold">Apellido materno:</span> ${maternal}</div>
   `;
 
   namesElement.classList = "m-3";
@@ -39,36 +39,26 @@ async function validateRut(event) {
     options
   ).catch((error) => console.log(error));
 
-  const isValidRutElement = document.getElementById("isValidRut");
+  const rutStatus = document.getElementById("rut_status");
 
   const { isValid } = await response.json();
   const isFormatValid = isValidRutFormat(rut);
 
-  const base = ["flex", "items-center", "gap-1", "ml-3"];
+  const base = "flex items-center gap-1 ml-3 mt-2 font-semibold";
   if (isFormatValid && isValid) {
-    isValidRutElement.innerHTML = `
+    rutStatus.innerHTML = `
       <span>El RUT es válido</span>
-      <span class="material-icons">verified</span>
+      <span class="material-icons text-xl">verified</span>
     `;
 
-    isValidRutElement.className = [
-      ...base,
-      "text-green-500",
-      "font-semibold",
-      "mt-2",
-    ].join(" ");
+    rutStatus.className = `${base} text-green-500`;
   } else {
-    isValidRutElement.innerHTML = `
-      <span>${isFormatValid ? "El RUT es no válido" : "Formato inválido"}</span>
-      <span class="material-icons">error</span>
+    rutStatus.innerHTML = `
+      <span>${isFormatValid ? "El RUT no es válido" : "Formato inválido"}</span>
+      <span class="material-icons text-xl">error</span>
     `;
 
-    isValidRutElement.className = [
-      ...base,
-      "text-red-500",
-      "font-semibold",
-      "mt-2",
-    ].join(" ");
+    rutStatus.className = `${base} text-red-500`;
   }
 }
 
@@ -76,4 +66,9 @@ function isValidRutFormat(rut) {
   return /^(?:(?:(\d{1,2})(\d{3})(\d{3})\-?(\d|k))|(?:(\d{1,2})(\.\d{3}\.)(\d{3})\-(\d|k))|(\d{5,9}))$/g.test(
     rut
   );
+}
+
+function toggle(inputId, buttonId) {
+  document.getElementById(buttonId).disabled =
+    document.getElementById(inputId).value === "";
 }

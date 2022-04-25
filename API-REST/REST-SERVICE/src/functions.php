@@ -32,12 +32,12 @@ function split_full_name($full_name)
 {
     $splitted = explode(' ', $full_name);
     $names = array_slice($splitted, 0, -2);
-    $last_names = array_slice($splitted, -2);
+    $last = array_slice($splitted, -2);
     return [
         'names' => $names,
-        'lastNames' => [
-            'paternalName' => $last_names[0],
-            'maternalName' => $last_names[1],
+        'last' => [
+            'paternal' => $last[0],
+            'maternal' => $last[1],
         ]
     ];
 }
