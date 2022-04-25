@@ -29,9 +29,9 @@ function split_full_name($full_name)
     $last_names = array_slice($splitted, -2);
     return [
         'names' => $names,
-        'last_names' => [
-            'paternal_name' => $last_names[0],
-            'maternal_name' => $last_names[1],
+        'lastNames' => [
+            'paternalName' => $last_names[0],
+            'maternalName' => $last_names[1],
         ]
     ];
 }

@@ -13,13 +13,13 @@ router('GET', '^/validar-rut/(?<rut>.+)$', function ($params) {
     } else if (5 > $length || $length > 9) {
         echo json_encode(['error' => 'El RUT debe contener entre 5 y 9 dígitos.']);
     } else {
-        echo json_encode(['is_valid' => is_valid_rut($rut)]);
+        echo json_encode(['isValid' => is_valid_rut($rut)]);
     }
 });
 
 router('GET', '^/separar-nombre/(?<name>.+)$', function ($params) {
     $name = str_replace('%20', ' ', $params['name']);
-    echo json_encode(['data' => split_full_name($name)]);
+    echo json_encode(split_full_name($name));
 });
 
 header("HTTP/1.0 404 Not Found");
