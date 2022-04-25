@@ -3,7 +3,9 @@ interface HeaderCellProps extends React.HTMLProps<HTMLDivElement> {}
 function HeaderCell({ className, ...props }: HeaderCellProps): JSX.Element {
   return (
     <div
-      className={`border-r-2 border-blue-400/5 px-3 py-2 font-semibold text-slate-100 ${className}`}
+      className={`flex h-full items-center
+      border-blue-400/5 bg-blue-300/[2%]
+      px-3 py-2 font-semibold text-slate-100 ${className}`}
       {...props}
     />
   );
@@ -36,12 +38,24 @@ function NamesTable({
       style={{ gridTemplateColumns: "max-content auto" }}
       {...props}
     >
-      <HeaderCell className="rounded-tl-lg border-b-2">Nombres</HeaderCell>
-      <Cell className="border-b-2">{names.join(", ")}</Cell>
-      <HeaderCell className="border-b-2">Apellido paterno</HeaderCell>
-      <Cell className="border-b-2">{paternal}</Cell>
-      <HeaderCell className="rounded-bl-lg">Apellido materno</HeaderCell>
-      <Cell>{maternal}</Cell>
+      <HeaderCell className="col-span-2 rounded-t-lg border-b-2">Nombres</HeaderCell>
+      <div className="col-span-2">
+        {names.map(name => (
+          <Cell key={name} className="border-b-2">
+            {name}
+          </Cell>
+        ))}
+      </div>
+      <HeaderCell className="col-span-2 border-b-2">Apellidos</HeaderCell>
+      <div
+        className="col-span-2 grid grid-cols-2"
+        style={{ gridTemplateColumns: "max-content auto" }}
+      >
+        <HeaderCell className="border-b-2 border-r-2">Apellido paterno</HeaderCell>
+        <Cell className="border-b-2 border-r-2">{paternal}</Cell>
+        <HeaderCell>Apellido materno</HeaderCell>
+        <Cell>{maternal}</Cell>
+      </div>
     </div>
   );
 }

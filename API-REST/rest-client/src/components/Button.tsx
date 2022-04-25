@@ -16,7 +16,7 @@ function Button({
         className={`absolute -inset-[1px] top-1 rounded-lg
           ${shadowColor} opacity-70 blur
           transition duration-500 ${
-            disabled ? "saturate-0" : "group-hover:opacity-100 group-hover:duration-200"
+            disabled ? "opacity-30 saturate-0" : "group-hover:opacity-100 group-hover:duration-200"
           }`}
       />
       <button
