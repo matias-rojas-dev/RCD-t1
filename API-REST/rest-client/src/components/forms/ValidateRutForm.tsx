@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 import Form from "./Form";
-import Input from "./Input";
-import RutStatusTile, { RutStatus } from "./RutStatus";
+import Input from "../Input";
+import RutStatusTile, { RutStatus } from "../RutStatus";
 
 interface ValidateRutFormProps extends React.HTMLProps<HTMLFormElement> {}
 
@@ -11,6 +11,11 @@ function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
   const [rut, setRut] = useState("");
   const [status, setStatus] = useState<RutStatus | null>(null);
   const disabled = rut === "";
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+    setRut(event.currentTarget.value);
+    if (status != null) setStatus(null);
+  };
 
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async event => {
     event.preventDefault();
@@ -28,7 +33,7 @@ function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
       <Form>
         <Input
           value={rut}
-          onChange={event => setRut(event.currentTarget.value)}
+          onChange={onChange}
           name="rut"
           placeholder="RUT con DV"
           focusColor="focus:border-cyan-500"

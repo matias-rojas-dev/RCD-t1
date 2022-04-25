@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect } from "react";
 import Card from "./Card";
-import SplitNameForm from "./SplitNameForm";
-import ValidateRutForm from "./ValidateRutForm";
+import SplitNameForm from "./forms/SplitNameForm";
+import ValidateRutForm from "./forms/ValidateRutForm";
 
 function App(): JSX.Element {
   useEffect(() => {

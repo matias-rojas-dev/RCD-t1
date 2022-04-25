@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 import Form from "./Form";
-import Input from "./Input";
-import NamesTable, { Names } from "./NamesTable";
+import Input from "../Input";
+import NamesTable, { Names } from "../NamesTable";
 
 interface SplitNameFormProps extends React.HTMLProps<HTMLFormElement> {}
 
@@ -11,6 +11,11 @@ function SplitNameForm(props: SplitNameFormProps): JSX.Element {
   const [name, setName] = useState("");
   const [names, setNames] = useState<Names | null>(null);
   const disabled = name === "";
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+    setName(event.currentTarget.value);
+    if (names != null) setNames(null);
+  };
 
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async event => {
     event.preventDefault();
@@ -27,7 +32,7 @@ function SplitNameForm(props: SplitNameFormProps): JSX.Element {
       <Form>
         <Input
           value={name}
-          onChange={event => setName(event.currentTarget.value)}
+          onChange={onChange}
           name="name"
           placeholder="Nombre completo"
           focusColor="focus:border-violet-500"
