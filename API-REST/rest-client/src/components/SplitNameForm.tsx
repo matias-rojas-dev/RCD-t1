@@ -4,7 +4,6 @@ import Button from "./Button";
 import Form from "./Form";
 import Input from "./Input";
 import NamesTable, { Names } from "./NamesTable";
-import { serviceUrl } from "../serviceUrl";
 
 interface SplitNameFormProps extends React.HTMLProps<HTMLFormElement> {}
 
@@ -16,7 +15,7 @@ function SplitNameForm(props: SplitNameFormProps): JSX.Element {
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async event => {
     event.preventDefault();
     try {
-      const response = await axios.get(`${serviceUrl}/separar-nombre/${name}`);
+      const response = await axios.get(`${window.server.url}/separar-nombre/${name}`);
       setNames(response.data);
     } catch (error) {
       console.error(error);

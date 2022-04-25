@@ -1,8 +1,14 @@
+import axios from "axios";
+import { useEffect } from "react";
 import Card from "./Card";
 import SplitNameForm from "./SplitNameForm";
 import ValidateRutForm from "./ValidateRutForm";
 
 function App(): JSX.Element {
+  useEffect(() => {
+    axios.get("server.json").then(response => (window.server = response.data));
+  }, []);
+
   return (
     <Card>
       <h1 className="mb-2 text-lg font-semibold text-white">Web service - API REST</h1>

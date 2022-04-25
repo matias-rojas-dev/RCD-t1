@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { serviceUrl } from "../serviceUrl";
 import Button from "./Button";
 import Form from "./Form";
 import Input from "./Input";
@@ -16,7 +15,7 @@ function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async event => {
     event.preventDefault();
     try {
-      const response = await axios.get(`${serviceUrl}/validar-rut/${rut}`);
+      const response = await axios.get(`${window.server.url}/validar-rut/${rut}`);
       const status = response.data;
       setStatus(status);
     } catch (error) {
