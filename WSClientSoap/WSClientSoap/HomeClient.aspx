@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Cliente SOAP</title>
-    <link href="style.css" rel="stylesheet" >
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -21,6 +21,8 @@
                 <asp:TextBox ID="name_inputCompleteName" runat="server" />
                 <asp:Button CssClass="button" ID="name_result" Text="Resultado" runat="server" OnClick="name_result_Click" />
                 <hr />
+                <asp:Literal id="litMarkup" runat="server" />
+
                 <asp:Label CssClass="name_response" ID="name_response" runat="server" />
                
             </div>

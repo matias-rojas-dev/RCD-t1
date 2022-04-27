@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b8087924-7f8f-4395-bda3-3623b9a88ffa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0ec44995-140a-4e5a-9fd1-6514580d8eac" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/WSServerSOAP/MetodosRCD?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8081/WSServerSOAP/MetodosRCD?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MetodosRCD1.xsd" MetadataType="Schema" ID="5d7977f1-d716-45f3-a9a1-fe7c6c6b161c" SourceId="1" SourceUrl="http://localhost:8080/WSServerSOAP/MetodosRCD?xsd=1" />
-    <MetadataFile FileName="MetodosRCD1.wsdl" MetadataType="Wsdl" ID="310feb1e-af07-401c-94aa-762558ae499d" SourceId="1" SourceUrl="http://localhost:8080/WSServerSOAP/MetodosRCD?wsdl" />
+    <MetadataFile FileName="MetodosRCD.xsd" MetadataType="Schema" ID="94c15bba-049b-4b75-a634-b912411b08aa" SourceId="1" SourceUrl="http://localhost:8081/WSServerSOAP/MetodosRCD?xsd=1" />
+    <MetadataFile FileName="MetodosRCD.wsdl" MetadataType="Wsdl" ID="0a66c998-23d4-4fbc-b04d-410ed3b36e63" SourceId="1" SourceUrl="http://localhost:8081/WSServerSOAP/MetodosRCD?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

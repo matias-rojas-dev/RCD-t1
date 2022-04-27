@@ -65,13 +65,48 @@ public class MetodosRCD {
     
 /*Formato recibido: Nombre1 Nombre2 ... NombreN Apellido1 Apellido2  [Utilizar método Split]*/
     @WebMethod(operationName = "ValidacionNombre")
-    public String ValidacionNombre (@WebParam(name="nombreCompleto") String nombreCompleto){
-        //Guarda el valor por campos separador por un " "
-        String [] nombresApellidos = nombreCompleto.split(" ");
-        int inicio = (nombresApellidos.length) - 2, fin = nombresApellidos.length;
-        String[] apellidos = Arrays.copyOfRange(nombresApellidos, inicio, fin);
-        String[] nombres = Arrays.copyOfRange(nombresApellidos, 0, fin-2);
-        
-        return "Nombres: " + Arrays.toString(nombres) + "Apellidos: " + Arrays.toString(apellidos);
+    public String [] ValidacionNombre (@WebParam(name="nombreCompleto") String name){
+      String toValidate = name;
+      String [] completeName = toValidate.split(" ");
+
+      String validatedName []; 
+      
+      int sizeArray = completeName.length - 1; // we only want to use the positions of the elements in the array, for that we subs 1 from the length of the array
+
+      validatedName = new String[completeName.length + 2];
+      int lastsNamesPosition = sizeArray ;
+      
+      validatedName[0] = "Nombres";
+      validatedName[lastsNamesPosition] = "Apellidos";
+      
+      int lnCompleteName = completeName.length - 1;
+      int lnValidatedName = validatedName.length - 1;
+      
+      // Go through the array that already contains the values "Names" and "Surnames" in this way, 
+      // those fields that are empty will be completed with the array that contains the full name.
+      
+      for(int cont = 0; lnValidatedName >= cont; lnValidatedName--){
+          if(validatedName[lnValidatedName] == null || validatedName[lnValidatedName].isEmpty()){
+              validatedName[lnValidatedName] = completeName[lnCompleteName];
+              lnCompleteName--;
+          }
+      }
+      
+      lnValidatedName = validatedName.length - 2;
+      
+      for(int cont = lnValidatedName; validatedName.length - 1 >= cont; cont++ ) {
+          if(cont < validatedName.length - 1){
+              String auxValue = validatedName[cont];
+              validatedName[cont] = "Apellido Paterno: " + auxValue;
+          } 
+          if(cont == validatedName.length - 1){
+              String auxValue = validatedName[cont];
+              validatedName[cont] = "Apellido Materno: " + auxValue;
+          }
+      }
+ 
+
+      return validatedName;
+      
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+
 
 namespace WSClientSoap
 {
@@ -25,12 +27,37 @@ namespace WSClientSoap
 
         protected void name_result_Click(object sender, EventArgs e)
         {
-            String name = name_inputCompleteName.Text.ToString();
-                String response = ws.ValidacionNombre(name);
-                name_response.Text = response;
-            
+            //String name = name_inputCompleteName.Text.ToString();
+            //String response = ws.ValidacionNombre(name);
+            //name_response.Text = response;
 
-            
+            //List<string> locations;
+            StringBuilder sb = new StringBuilder();
+
+                
+            //string [] name = {"Nombres", "Matías", "Ignacio", "David", "Andres", "Apellidos", "Apellido paterno: Tapia", "Apellido materno: Rojas"};
+            string[] name = { ws.ValidacionNombre("Matías Rojas Rojas") };
+
+            int [] mainValues = {name.Length - 3}; // {5}
+			foreach(var item in name){ // 0
+		    foreach(var index in mainValues){ // nombres: 0
+                if (Array.IndexOf(name, item) == index || Array.IndexOf(name, item) == 0 )
+                {
+                    sb.Append("<ul>");
+                    sb.Append("<h2>" + item + "</h2>");
+                }
+
+                if(!Array.Exists(mainValues, element => element == Array.IndexOf(name, item)) && Array.IndexOf(name, item) != 0 )
+                {
+                    sb.Append("<li>" + item + "</li>");
+                }
+
+			    } // end first for
+                sb.Append("</ul>");
+		    } // end first for
+
+            litMarkup.Text = sb.ToString();
+
         }
 
         protected void rut_result_Click(object sender, EventArgs e)

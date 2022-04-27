@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="GpJ8slHMN4SVjWZ5K7pBvYYCaKk=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="sCv04zZkZHtJl5PbodCL/CoCBKY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="MetodosRCDPortBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="MetodosRCDPort" contract="WSServerSoap.MetodosRCD" bindingType="basicHttpBinding" address="http://localhost:8080/WSServerSOAP/MetodosRCD" bindingConfiguration="MetodosRCDPortBinding">
+    <endpoint name="MetodosRCDPort" contract="WSServerSoap.MetodosRCD" bindingType="basicHttpBinding" address="http://localhost:8081/WSServerSOAP/MetodosRCD" bindingConfiguration="MetodosRCDPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8080/WSServerSOAP/MetodosRCD</serializedValue>
+          <serializedValue>http://localhost:8081/WSServerSOAP/MetodosRCD</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

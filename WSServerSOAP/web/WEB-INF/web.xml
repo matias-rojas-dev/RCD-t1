@@ -8,27 +8,9 @@
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-        <servlet-name>CalculatorService</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet>
-        <servlet-name>Calculator</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
     <servlet-mapping>
         <servlet-name>MetodosRCD</servlet-name>
         <url-pattern>/MetodosRCD</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CalculatorService</servlet-name>
-        <url-pattern>/CalculatorService</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Calculator</servlet-name>
-        <url-pattern>/Calculator</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
