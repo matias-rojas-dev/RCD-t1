@@ -27,7 +27,7 @@ namespace WSClientSoap
 
         protected void name_result_Click(object sender, EventArgs e)
         {
-            //String name = name_inputCompleteName.Text.ToString();
+            String dato = name_inputCompleteName.Text.ToString();
             //String response = ws.ValidacionNombre(name);
             //name_response.Text = response;
 
@@ -36,7 +36,7 @@ namespace WSClientSoap
 
                 
             //string [] name = {"Nombres", "Matías", "Ignacio", "David", "Andres", "Apellidos", "Apellido paterno: Tapia", "Apellido materno: Rojas"};
-            string[] name = { ws.ValidacionNombre("Matías Rojas Rojas") };
+            string[] name = ws.ValidacionNombre(dato);
 
             int [] mainValues = {name.Length - 3}; // {5}
 			foreach(var item in name){ // 0
