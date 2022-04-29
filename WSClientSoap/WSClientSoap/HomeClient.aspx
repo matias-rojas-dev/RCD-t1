@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Cliente SOAP</title>
     <link href="style.css" rel="stylesheet" />

@@ -13,7 +13,7 @@ namespace WSClientSoap
     public partial class HomeClient : System.Web.UI.Page
     {
 
-        ServiceReference1.MetodosRCDClient ws = new ServiceReference1.MetodosRCDClient();
+        WSServerSOAP.MetodosRCDClient ws = new WSServerSOAP.MetodosRCDClient();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,29 +28,20 @@ namespace WSClientSoap
         protected void name_result_Click(object sender, EventArgs e)
         {
             String dato = name_inputCompleteName.Text.ToString();
-<<<<<<< HEAD
-=======
-            //String response = ws.ValidacionNombre(name);
-            //name_response.Text = response;
->>>>>>> 7aecb67ebb0de0fe432e91f97624aa50199f6df9
 
             StringBuilder sb = new StringBuilder();
 
-<<<<<<< HEAD
-=======
-                
-            //string [] name = {"Nombres", "Matías", "Ignacio", "David", "Andres", "Apellidos", "Apellido paterno: Tapia", "Apellido materno: Rojas"};
-            string[] name = ws.ValidacionNombre(dato);
->>>>>>> 7aecb67ebb0de0fe432e91f97624aa50199f6df9
+            litMarkup.Text = sb.ToString();
 
             try
             {
+                name_response.Text = "";
                 string[] name = ws.ValidacionNombre(dato);
                 int sizeName = name.Length;
 
                 if (sizeName > 4)
                 {
-                    int[] mainValues = { name.Length - 3 }; // {5}
+                    int[] mainValues = { name.Length - 3 };
                     foreach (var item in name)
                     { // 0
                         foreach (var index in mainValues)
@@ -74,7 +65,7 @@ namespace WSClientSoap
                 }
                 else
                 {
-                    name_response.Text = "Por favor, ingrese como mínimo dos apellidos";
+                        name_response.Text = "Por favor, ingrese como mínimo dos apellidos";
                 }
             }
             catch
@@ -82,8 +73,6 @@ namespace WSClientSoap
                 name_response.Text = "Ha ingresado solo un nombre. Por favor, ingrese dos apellidos";
             }
         }
-
-            
 
         protected void rut_result_Click(object sender, EventArgs e)
         {
