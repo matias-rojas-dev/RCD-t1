@@ -33,7 +33,7 @@
                 <asp:TextBox ID="rut_withoutCheckCode" type="number" min="0" MaxLength="99999999" runat="server" />
                 <br />
                 <asp:Label ID="ckech" Text="Ingrese dígito verificador : " runat="server" />
-                <asp:TextBox ID="rut_checkCode" type="number" min="0" MaxLength="9" runat="server" />
+                <asp:TextBox ID="rut_checkCode" type="text" min="0" MaxLength="9" runat="server" />
                 <br />
 
                 <asp:Button CssClass="button" ID="rut_result" Text="Resultado" runat="server" OnClick="rut_result_Click" />
