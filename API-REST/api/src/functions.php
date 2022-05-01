@@ -20,8 +20,9 @@ function get_verifying_digit($rut)
 {
     $s = 1;
     $rut = intval($rut);
+    $m = 0;
 
-    for ($m = 0; $rut != 0; $rut /= 10) {
+    for (; $rut != 0; $rut /= 10) {
         $s = ($s + $rut % 10 * (9 - $m++ % 6)) % 11;
     }
 

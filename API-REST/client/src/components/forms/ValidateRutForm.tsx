@@ -21,8 +21,7 @@ function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
     event.preventDefault();
     try {
       const response = await axios.get(`${window.server.url}/validar-rut/${rut}`);
-      const status = response.data;
-      setStatus(status);
+      setStatus(response.data);
     } catch (error) {
       console.error(error);
     }
