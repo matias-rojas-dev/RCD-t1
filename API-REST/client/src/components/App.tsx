@@ -45,8 +45,8 @@ function App(): JSX.Element {
       )}
       <p className="mt-6 text-xs leading-normal text-blue-300/20">
         Trabajo realizado por el grupo 3 de la asignatura de Redes y Comunicación de Datos,
-        integrado por Maximiliano Araya, Benjamín Herrera, Vania Palacios, Matías Rojas y David
-        Uribe.
+        integrado por Patricio Aguirre, Maximiliano Araya, Benjamín Herrera, Vania Palacios, Matías
+        Rojas y David Uribe.
       </p>
     </Card>
   );
