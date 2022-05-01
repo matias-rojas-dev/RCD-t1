@@ -9,7 +9,6 @@
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
 x64/
 build/
 bld/
@@ -21,7 +20,7 @@ bld/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
+
 
 #NUNIT
 *.VisualState.xml
