@@ -27,7 +27,7 @@ router('GET', '^/validar-rut/(?<rut>.+)$', function ($params) {
 
 router('GET', '^/separar-nombre/(?<name>.+)$', function ($params) {
     global $logger;
-    $name = str_replace('%20', ' ', $params['name']);
+    $name = urldecode($params['name']);
     $full_name = split_full_name($name);
 
     $has_last = array_key_exists('last', $full_name);
