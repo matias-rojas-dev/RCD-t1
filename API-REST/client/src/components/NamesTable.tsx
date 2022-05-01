@@ -13,9 +13,9 @@ function HeaderCell({ className, ...props }: HeaderCellProps): JSX.Element {
 
 export interface Names {
   names: string[];
-  last: {
+  last?: {
     paternal: string;
-    maternal: string;
+    maternal?: string;
   };
 }
 
@@ -27,11 +27,7 @@ function Cell({ className, ...props }: CellProps): JSX.Element {
 
 type NamesTableProps = Names & React.HTMLProps<HTMLDivElement>;
 
-function NamesTable({
-  names,
-  last: { paternal, maternal },
-  ...props
-}: NamesTableProps): JSX.Element {
+function NamesTable({ names, last, ...props }: NamesTableProps): JSX.Element {
   return (
     <div
       className="my-6 rounded-xl border-2 border-blue-400/5 bg-clip-border text-sm text-white"
@@ -45,13 +41,21 @@ function NamesTable({
           </Cell>
         ))}
       </div>
-      <HeaderCell className="border-b-2">Apellidos</HeaderCell>
-      <div className="grid grid-cols-[max-content_auto]">
-        <HeaderCell className="border-b-2 border-r-2">Apellido paterno</HeaderCell>
-        <Cell className="border-b-2">{paternal}</Cell>
-        <HeaderCell className="border-r-2">Apellido materno</HeaderCell>
-        <Cell>{maternal}</Cell>
-      </div>
+      {last != null && (
+        <>
+          <HeaderCell className="border-b-2">Apellidos</HeaderCell>
+          <div className="grid grid-cols-[max-content_auto]">
+            <HeaderCell className="border-b-2 border-r-2">Apellido paterno</HeaderCell>
+            <Cell className="border-b-2">{last.paternal}</Cell>
+            {last.maternal != null && (
+              <>
+                <HeaderCell className="border-r-2">Apellido materno</HeaderCell>
+                <Cell>{last.maternal}</Cell>
+              </>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

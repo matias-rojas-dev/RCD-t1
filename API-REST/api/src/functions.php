@@ -32,13 +32,27 @@ function get_verifying_digit($rut)
 function split_full_name($full_name)
 {
     $splitted = explode(' ', $full_name);
-    $names = array_slice($splitted, 0, -2);
-    $last = array_slice($splitted, -2);
-    return [
-        'names' => $names,
-        'last' => [
-            'paternal' => $last[0],
-            'maternal' => $last[1],
-        ]
-    ];
+    $trimmed = array_map('trim', $splitted);
+    $filtered = array_values(array_filter($trimmed, 'strlen'));
+
+    switch (count($filtered)) {
+        case 1:
+            return ['names' => $filtered];
+        case 2:
+            [$name, $paternal] = $filtered;
+            return [
+                'names' => [$name],
+                'last' => ['paternal' => $paternal],
+            ];
+        default:
+            $names = array_slice($filtered, 0, -2);
+            $last = array_slice($filtered, -2);
+            return [
+                'names' => $names,
+                'last' => [
+                    'paternal' => $last[0],
+                    'maternal' => $last[1],
+                ]
+            ];
+    }
 }

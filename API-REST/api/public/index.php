@@ -30,11 +30,22 @@ router('GET', '^/separar-nombre/(?<name>.+)$', function ($params) {
     $name = str_replace('%20', ' ', $params['name']);
     $full_name = split_full_name($name);
 
+    $has_last = array_key_exists('last', $full_name);
+    $has_paternal = $has_last ? array_key_exists('paternal', $full_name['last']) : false;
+    $has_maternal = $has_last ? array_key_exists('maternal', $full_name['last']) : false;
+
     $log = $logger("GET, separar-nombre: \"$name\"");
     $log("Resultado separación:");
-    $log("├─ Nombres: [" . join(", ", $full_name['names']) . "]");
-    $log("├─ Apellido paterno: {$full_name['last']['paternal']}");
-    $log("└─ Apellido materno: {$full_name['last']['maternal']}");
+
+    $log(($has_last ? "├─" : "└─") . " Nombres: [" . join(", ", $full_name['names']) . "]");
+
+    if ($has_paternal) {
+        $log(($has_maternal ? "├─" : "└─") . " Apellido paterno: {$full_name['last']['paternal']}");
+    }
+
+    if ($has_maternal) {
+        $log("└─ Apellido materno: {$full_name['last']['maternal']}");
+    }
 
     echo json_encode($full_name);
 });
