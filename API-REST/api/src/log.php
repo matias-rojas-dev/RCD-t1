@@ -2,12 +2,16 @@
 
 date_default_timezone_set("America/Santiago");
 
-function logger(string $file)
+function logger($file)
 {
-    return fn (string $where) => fn (string $message) =>
-        file_put_contents(
-            $file,
-            "[" . date("Y-m-d H:i:s") . "] ($where) $message" . PHP_EOL,
-            FILE_APPEND
-        );
+    return function ($where) use ($file) {
+        return function ($message) use ($file, $where) {
+            return
+                file_put_contents(
+                    $file,
+                    "[" . date("Y-m-d H:i:s") . "] ($where) $message" . PHP_EOL,
+                    FILE_APPEND
+                );
+        };
+    };
 }
