@@ -15,6 +15,30 @@ namespace WSClientSoap
 
         WSServerSOAP.MetodosRCDClient ws = new WSServerSOAP.MetodosRCDClient();
 
+        public static void buccleEach(int [] mainValues, string [] name, StringBuilder sb)
+        {
+            foreach (var item in name)
+            { // 0
+                foreach (var index in mainValues)
+                { // nombres: 0
+                    if (Array.IndexOf(name, item) == index || Array.IndexOf(name, item) == 0)
+                    {
+                        sb.Append("<ul>");
+                        sb.Append("<h2>" + item + "</h2>");
+                    }
+
+                    if (!Array.Exists(mainValues, element => element == Array.IndexOf(name, item)) && Array.IndexOf(name, item) != 0)
+                    {
+                        sb.Append("<li>" + item + "</li>");
+                    }
+
+                } // end first for
+                sb.Append("</ul>");
+            } // end first for
+        }
+
+
+
         protected void name_result_Click(object sender, EventArgs e)
         {
 
@@ -40,24 +64,8 @@ namespace WSClientSoap
                 {
                     myLog.Add("Ha ingresado correctamente los campos necesarios para realizar la operación");
                     int[] mainValues = { name.Length - 3 };
-                    foreach (var item in name)
-                    { // 0
-                        foreach (var index in mainValues)
-                        { // nombres: 0
-                            if (Array.IndexOf(name, item) == index || Array.IndexOf(name, item) == 0)
-                            {
-                                sb.Append("<ul>");
-                                sb.Append("<h2>" + item + "</h2>");
-                            }
 
-                            if (!Array.Exists(mainValues, element => element == Array.IndexOf(name, item)) && Array.IndexOf(name, item) != 0)
-                            {
-                                sb.Append("<li>" + item + "</li>");
-                            }
-
-                        } // end first for
-                        sb.Append("</ul>");
-                    } // end first for
+                    buccleEach(mainValues, name, sb);
 
                     myLog.Add("No ha habido problemas. Se ha completado exitosamente la operación ");
                     litMarkup.Text = sb.ToString();
@@ -83,7 +91,7 @@ namespace WSClientSoap
             Log myLog = new Log(@setPath);
             myLog.Add("Llamado al método 'ValidacionRut'");
 
-            String rut = rut_withoutCheckCode.Text.ToString();
+            string rutCode = rut_withoutCheckCode.Text.ToString();
             String dv = rut_checkCode.Text.ToString();
             String[] posibleValuesDv = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "K", "k" };
             var check = Array.Exists(posibleValuesDv, element => element == dv);
@@ -92,7 +100,7 @@ namespace WSClientSoap
 
             if (check == true)
             {
-                if ((ws.ValidacionRut(rut, dv).ToString()).Equals("True"))
+                if ((ws.ValidacionRut(rutCode, dv).ToString()).Equals("True"))
                 {
                     rut_response.Text = "El digito validador ingresado es correcto";
                     myLog.Add("No ha habido problemas. Se ha completado exitosamente la operación");
@@ -106,8 +114,8 @@ namespace WSClientSoap
             }
             else
             {
-                rut_response.Text = "Error en el dígito verificador";
-                myLog.Add("Error: el dígito que ha ingresado no está permitido");
+                rut_response.Text = "Error en el dígito verificador o ha ingresado algún campo vacío";
+                myLog.Add("Error: el dígito que ha ingresado no está permitido o ha ingresado un campo vacío");
 
             }
         }

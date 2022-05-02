@@ -8,7 +8,7 @@ namespace WSClientSoap
 {
     public class Log
     {
-        private string Path = "";
+        private readonly string Path = "";
 
         public Log(string Path)
         {
@@ -47,7 +47,6 @@ namespace WSClientSoap
             catch(DirectoryNotFoundException ex)
             {
                 throw new Exception(ex.Message);
-                return false;
             }
         }
         #endregion
