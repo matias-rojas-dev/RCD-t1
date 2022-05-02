@@ -1,5 +1,6 @@
 <?php
 
+// Elimina los puntos y guiones del RUT.
 function normalize_rut($rut)
 {
     return preg_replace('/(\.|\-)/', '', $rut);
@@ -8,7 +9,7 @@ function normalize_rut($rut)
 function is_valid_rut($rut)
 {
     $rut = normalize_rut($rut);
-    $verifying_digit = substr($rut, -1);
+    $verifying_digit = strtoupper(substr($rut, -1)); // Mayúsculas para normalizar la "k" minúscula.
     $rut = substr($rut, 0, -1);
     return get_verifying_digit($rut) === $verifying_digit;
 }
