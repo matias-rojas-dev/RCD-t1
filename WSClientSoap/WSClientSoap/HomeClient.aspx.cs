@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
-
+using System.IO;
 
 namespace WSClientSoap
 {
@@ -18,8 +18,10 @@ namespace WSClientSoap
         protected void name_result_Click(object sender, EventArgs e)
         {
 
-            Log myLog = new Log(@"C:\Users\maigr\OneDrive\Escritorio\RCD-t1\WSClientSoap\WSClientSoap\release");
-            
+            string path = @"\logs-rcd";
+            string setPath = Path.GetFullPath(path);
+            Log myLog = new Log(@setPath);
+
             myLog.Add("Llamado al método 'ValidacionNombre'");
 
             String dato = name_inputCompleteName.Text.ToString();
@@ -76,8 +78,9 @@ namespace WSClientSoap
 
         protected void rut_result_Click(object sender, EventArgs e)
         {
-
-            Log myLog = new Log(@"C:\Users\maigr\OneDrive\Escritorio\RCD-t1\WSClientSoap\WSClientSoap\release");
+            string path = @"\logs-rcd";
+            string setPath = Path.GetFullPath(path);
+            Log myLog = new Log(@setPath);
             myLog.Add("Llamado al método 'ValidacionRut'");
 
             String rut = rut_withoutCheckCode.Text.ToString();

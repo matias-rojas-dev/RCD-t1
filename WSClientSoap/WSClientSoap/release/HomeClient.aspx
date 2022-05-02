@@ -45,7 +45,7 @@
         </form>
     </div>
     <footer>
-        <p>Creado por...</p>
+        Trabajo realizado por el grupo 3 de la asignatura de Redes y Comunicación de Datos, integrado por Patricio Aguirre, Maximiliano Araya, Benjamín Herrera, Vania Palacios, Matías Rojas y David Uribe.
     </footer>
     </div>
 </body>
