@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import Container from "./Container";
+import ErrorContainer from "./ErrorContainer";
 import SplitNameForm from "./forms/SplitNameForm";
 import ValidateRutForm from "./forms/ValidateRutForm";
 
@@ -19,18 +19,12 @@ function App(): JSX.Element {
     <Card>
       <h1 className="mb-2 text-lg font-semibold text-white">Web service - API REST</h1>
       {isError ? (
-        <Container className="text-rose-400">
-          <span className="material-symbols-outlined text-[30px]">report</span>
-          <div className="flex flex-col gap-1 text-base">
-            <span>Error al cargar los datos del servidor.</span>
-            <span className="text-sm font-normal">
-              Asegurarse que el archivo <span className="font-mono">server.json</span> existe, y
-              está ubicado en la misma carpeta del archivo{" "}
-              <span className="font-mono">index.html</span>. Su contenido es un objeto JSON con una
-              llave &ldquo;url&rdquo; y cuyo valor es la dirección URL absoluta del servidor.
-            </span>
-          </div>
-        </Container>
+        <ErrorContainer title="¡Error al cargar los datos del servidor!">
+          Asegurarse que el archivo <span className="font-mono">server.json</span> existe, y está
+          ubicado en la misma carpeta del archivo <span className="font-mono">index.html</span>. Su
+          contenido es un objeto JSON con una llave &ldquo;url&rdquo; y cuyo valor es la dirección
+          URL absoluta del servidor.
+        </ErrorContainer>
       ) : (
         <>
           <p className="text-sm text-slate-300">

@@ -1,5 +1,6 @@
 <?php
 
+// Elimina los puntos y guiones del RUT.
 function normalize_rut($rut)
 {
     return preg_replace('/(\.|\-)/', '', $rut);
@@ -8,7 +9,7 @@ function normalize_rut($rut)
 function is_valid_rut($rut)
 {
     $rut = normalize_rut($rut);
-    $verifying_digit = substr($rut, -1);
+    $verifying_digit = strtoupper(substr($rut, -1)); // Mayúsculas para normalizar la "k" minúscula.
     $rut = substr($rut, 0, -1);
     return get_verifying_digit($rut) === $verifying_digit;
 }
@@ -31,28 +32,20 @@ function get_verifying_digit($rut)
 
 function split_full_name($full_name)
 {
-    $splitted = explode(' ', $full_name);
-    $trimmed = array_map('trim', $splitted);
-    $filtered = array_values(array_filter($trimmed, 'strlen'));
+    $items = explode(' ', $full_name); // Separa el string en espacios.
+    $items = array_map('trim', $items); // Elimina los espacios dentro de cada ítem.
+    $items = array_values(array_filter($items, "strlen")); // Elimina los ítems vacíos.
 
-    switch (count($filtered)) {
-        case 1:
-            return ['names' => $filtered];
-        case 2:
-            [$name, $paternal] = $filtered;
-            return [
-                'names' => [$name],
-                'last' => ['paternal' => $paternal],
-            ];
-        default:
-            $names = array_slice($filtered, 0, -2);
-            $last = array_slice($filtered, -2);
-            return [
-                'names' => $names,
-                'last' => [
-                    'paternal' => $last[0],
-                    'maternal' => $last[1],
-                ]
-            ];
+    // Si el nombre no tiene apellidos, asignarles null. Así se garantiza que
+    // el arreglo siempre tenga al menos 3 elementos.
+    if (count($items) < 3) {
+        $fill = array_fill(0, 3 - count($items), null);
+        $items = array_merge($items, $fill);
     }
+
+    $names = array_slice($items, 0, -2);
+    [$paternal, $maternal] = array_slice($items, -2);
+    $last = array_filter(compact("paternal", "maternal"), "strlen");
+
+    return array_merge(compact("names"), array_filter(compact("last"), "count"));
 }

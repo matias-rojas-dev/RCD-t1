@@ -9,7 +9,7 @@ $logger = logger("index.log");
 router('GET', '^/validar-rut/(?<rut>.+)$', function ($params) {
     global $logger;
     $rut = $params['rut'];
-    $pattern = '/^(?:(?:(\d{1,2})(\d{3})(\d{3})\-?(\d|k))|(?:(\d{1,2})(\.\d{3}\.)(\d{3})\-(\d|k))|(\d{5,9}))$/';
+    $pattern = '/^(?:(?:(\d{1,2})(\d{3})(\d{3})\-?(\d|k|K))|(?:(\d{1,2})(\.\d{3}\.)(\d{3})\-(\d|k|K))|(\d{5,9}))$/';
 
     $log = $logger("GET, validar-rut: \"$rut\"");
     if (!preg_match($pattern, $rut)) {

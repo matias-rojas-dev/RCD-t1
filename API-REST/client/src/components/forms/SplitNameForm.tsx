@@ -4,12 +4,14 @@ import Button from "../Button";
 import Form from "./Form";
 import Input from "../Input";
 import NamesTable, { Names } from "../NamesTable";
+import ErrorContainer from "../ErrorContainer";
 
 interface SplitNameFormProps extends React.HTMLProps<HTMLFormElement> {}
 
 function SplitNameForm(props: SplitNameFormProps): JSX.Element {
   const [name, setName] = useState("");
   const [names, setNames] = useState<Names | null>(null);
+  const [isError, setIsError] = useState(false);
   const disabled = name === "";
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
@@ -19,17 +21,15 @@ function SplitNameForm(props: SplitNameFormProps): JSX.Element {
 
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async event => {
     event.preventDefault();
-    try {
-      const response = await axios.get(`${window.server.url}/separar-nombre/${name}`);
-      setNames(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    axios
+      .get(`${window.server.url}/separar-nombre/${name}`)
+      .then(response => setNames(response.data))
+      .catch(_ => setIsError(true));
   };
 
   return (
     <div>
-      <Form>
+      <Form {...props}>
         <Input
           value={name}
           onChange={onChange}
@@ -46,7 +46,13 @@ function SplitNameForm(props: SplitNameFormProps): JSX.Element {
           Separar
         </Button>
       </Form>
-      {names != null && <NamesTable {...names} />}
+      {isError ? (
+        <ErrorContainer title="¡Ha ocurrido un error!">
+          No se ha podido procesar su solicitud. Por favor, intente nuevamente.
+        </ErrorContainer>
+      ) : (
+        names != null && <NamesTable {...names} />
+      )}
     </div>
   );
 }
