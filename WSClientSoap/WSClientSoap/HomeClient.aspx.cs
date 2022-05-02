@@ -18,7 +18,7 @@ namespace WSClientSoap
         protected void name_result_Click(object sender, EventArgs e)
         {
 
-            string path = @"\logs-rcd";
+            string path = @"\logs-g3-rcd";
             string setPath = Path.GetFullPath(path);
             Log myLog = new Log(@setPath);
 
@@ -78,7 +78,7 @@ namespace WSClientSoap
 
         protected void rut_result_Click(object sender, EventArgs e)
         {
-            string path = @"\logs-rcd";
+            string path = @"\logs-g3-rcd";
             string setPath = Path.GetFullPath(path);
             Log myLog = new Log(@setPath);
             myLog.Add("Llamado al método 'ValidacionRut'");
