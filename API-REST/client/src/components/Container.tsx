@@ -1,4 +1,4 @@
-interface ContainerProps extends React.HTMLProps<HTMLDivElement> {}
+export interface ContainerProps extends React.HTMLProps<HTMLDivElement> {}
 
 function Container({ className, ...props }: ContainerProps): JSX.Element {
   return (

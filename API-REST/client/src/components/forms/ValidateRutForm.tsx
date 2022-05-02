@@ -4,12 +4,14 @@ import Button from "../Button";
 import Form from "./Form";
 import Input from "../Input";
 import RutStatusTile, { RutStatus } from "../RutStatus";
+import ErrorContainer from "../ErrorContainer";
 
 interface ValidateRutFormProps extends React.HTMLProps<HTMLFormElement> {}
 
 function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
   const [rut, setRut] = useState("");
   const [status, setStatus] = useState<RutStatus | null>(null);
+  const [isError, setIsError] = useState(false);
   const disabled = rut === "";
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = event => {
@@ -19,17 +21,15 @@ function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
 
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async event => {
     event.preventDefault();
-    try {
-      const response = await axios.get(`${window.server.url}/validar-rut/${rut}`);
-      setStatus(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    axios
+      .get(`${window.server.url}/validar-rut/${rut}`)
+      .then(response => setStatus(response.data))
+      .catch(_ => setIsError(true));
   };
 
   return (
     <div>
-      <Form>
+      <Form {...props}>
         <Input
           value={rut}
           onChange={onChange}
@@ -46,7 +46,13 @@ function ValidateRutForm(props: ValidateRutFormProps): JSX.Element {
           Validar
         </Button>
       </Form>
-      {status != null && <RutStatusTile {...status} />}
+      {isError ? (
+        <ErrorContainer title="¡Ha ocurrido un error!">
+          No se ha podido procesar su solicitud. Por favor, intente nuevamente.
+        </ErrorContainer>
+      ) : (
+        status != null && <RutStatusTile {...status} />
+      )}
     </div>
   );
 }
