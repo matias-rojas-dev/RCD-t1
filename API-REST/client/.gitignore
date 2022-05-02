@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+# Desactivado por condiciones de entrega RCD.
+# /build
 
 # misc
 .DS_Store
