@@ -10,11 +10,13 @@ function router($httpMethods, $route, $callback, $exit = true)
         header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
         header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+        header("Content-Type: application/json");
 
         $path = parse_url($_SERVER['REQUEST_URI'])['path'];
         $scriptName = dirname(dirname($_SERVER['SCRIPT_NAME']));
         $scriptName = str_replace('\\', '/', $scriptName);
         $len = strlen($scriptName);
+
         if ($len > 0 && $scriptName !== '/') {
             $path = substr($path, $len);
         }
@@ -35,11 +37,13 @@ function router($httpMethods, $route, $callback, $exit = true)
         $callback();
     } else {
         $params = array();
+
         foreach ($matches as $k => $v) {
             if (!is_numeric($k) && !isset($v[1])) {
                 $params[$k] = $v[0];
             }
         }
+
         $callback($params);
     }
 
